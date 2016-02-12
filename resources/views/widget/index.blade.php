@@ -7,7 +7,16 @@
 @section('content')
 	<div class="container">
 	{!! Breadcrumb::withLinks(['Home' => '/', 'Widgets' => '/widget']) !!}
-	<h1>Widgets</h1>
+	<div class="row">
+		<div class="col-md-6">
+			<h1>Widgets</h1>
+		</div>
+		<div class="col-md-6 text-right">
+			<a class="btn btn-lg btn-primary" href="/widget/create" style="margin-top:20px;">Create New</a>		
+		</div>
+	</div>
+	
+	
 	@include('widget.datatable')
 	</div>
 @endsection

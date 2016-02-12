@@ -26,7 +26,9 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 # widget routes
-Route::resource('widget', 'WidgetController');
+Route::get('widget/create', ['as' => 'widget.create', 'uses' => 'WidgetController@create']);
+Route::get('widget/{id}-{slug?}', ['as' => 'widget.show', 'uses' => 'WidgetController@show']);
+Route::resource('widget', 'WidgetController', ['except' => ['show', 'create']]);
 
 # API routes
 Route::any('api/widget', 'ApiController@widgetData');

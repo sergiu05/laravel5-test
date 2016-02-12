@@ -17,8 +17,10 @@ $(document).ready(function() {
 			{
 				"data": "widget_name",
 				"render": function(data, type, row, meta) {
-					return '<a href="/widget/' + row.id + '">' + data + '</a>';
+					return '<a href="/widget/' + row.id + '-' + row.slug +'">' + data + '</a>';
 				}
+			}, {
+				"data": "slug", "visible": false
 			}, {
 				"data": "created_at",
 				"render": function(data, type, row, meta) {

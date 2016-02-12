@@ -12,7 +12,7 @@ class ApiController extends Controller
 {
     public function widgetData() {
     	$results['data'] = \DB::table('widgets')
-    							->select('id', 'widget_name', 'created_at')
+    							->select('id', 'slug', 'widget_name', 'created_at')
     							->get();
     	return json_encode($results);	
     }
