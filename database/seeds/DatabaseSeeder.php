@@ -14,6 +14,10 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
+        Widget::truncate();
+
+        factory(Widget::class, 50)->create();
+
         // $this->call('UserTableSeeder');
 
         Model::reguard();
