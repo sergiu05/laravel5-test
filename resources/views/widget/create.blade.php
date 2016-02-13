@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+
 	{!! Breadcrumb::withLinks(['Home' => '/', 'Widgets' => '/widget', 'Create']) !!}
 
 	<h1>Create a New Widget</h1>
@@ -26,5 +26,5 @@
 	</div>
 
 	{!! Form::close() !!}
-</div>
+
 @endsection

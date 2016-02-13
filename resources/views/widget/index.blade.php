@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-	<div class="container">
+	
 	{!! Breadcrumb::withLinks(['Home' => '/', 'Widgets' => '/widget']) !!}
 	<div class="row">
 		<div class="col-md-6">
@@ -18,7 +18,7 @@
 	
 	
 	@include('widget.datatable')
-	</div>
+	
 @endsection
 
 @section('scripts')

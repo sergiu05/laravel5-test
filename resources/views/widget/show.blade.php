@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+
 {!! Breadcrumb::withLinks(['Home' => '/', 'Widgets' => '/widget', $widget->widget_name => $widget->id]) !!}
 
 <div><h1>Update {{ $widget->widget_name }}</h1></div>
@@ -33,7 +33,11 @@
 				<td>{{ $widget->id }}</td>
 				<td><a href="/widget/{{ $widget->id }}/edit">{{ $widget->widget_name }}</a></td>
 				<td>{{ $widget->showDateCreated($widget->created_at) }}</td>
+				@if (Auth::user()->adminOrCurrentUserOwns($widget))
 				<td><a href="/widget/{{ $widget->id }}/edit" class="btn btn-default">Edit</a></td>
+				@else
+				<td>{{ $widget->widget_name }}</td>
+				@endif
 				<td>
 					{!! Form::model($widget, ['route' => ['widget.destroy', $widget->id], 'method' => 'DELETE']) !!}
 					<div class="form-group">
@@ -44,7 +48,7 @@
 			</tr>
 		</table>
 	</div>
-</div>
+
 </div>
 @endsection
 

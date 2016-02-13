@@ -8,12 +8,16 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Widget;
+use App\Http\AuthTraits\OwnsRecord;
 
 class WidgetController extends Controller
 {
 
+    use OwnsRecord;
+
 	public function __construct() {
-		$this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('admin', ['except' => ['index', 'show']]);
+		$this->middleware('auth', ['except' => 'index']);
 	}
     /**
      * Display a listing of the resource.
@@ -89,6 +93,10 @@ class WidgetController extends Controller
     {
         $widget = Widget::findOrFail($id);
 
+        if ( ! $this->adminOrCurrentUserOwns($widget)) {
+            throw new UnauthorizedException;
+        }
+
         return view('widget.edit', compact('widget'));
     }
 
@@ -106,6 +114,10 @@ class WidgetController extends Controller
         ]);
 
         $widget = Widget::findOrFail($id);
+
+        if ($this->userNotOwnerOf($widget)) {
+            throw new UnauthorizedException;
+        }
 
         $slug = str_slug($request->widget_name, "-");
 

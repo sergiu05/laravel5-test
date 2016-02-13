@@ -33,4 +33,11 @@ Route::resource('widget', 'WidgetController', ['except' => ['show', 'create']]);
 # API routes
 Route::any('api/widget', 'ApiController@widgetData');
 
+# admin routes
+Route::get('admin', ['as' => 'admin', 'uses'  => 'AdminController@index']);
+
+# terms routes
+Route::get('terms-of-service', 'PagesController@terms');
+Route::get('privacy', 'PagesController@privacy');
+
 

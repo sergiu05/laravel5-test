@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -43,6 +44,11 @@ class Handler extends ExceptionHandler
     		case ($e instanceof ModelNotFoundException):
     			return response()->view('errors.404', [], 404);
     			break;
+            case ($e instanceof UnauthorizedException):
+                return response()->view('errors.unauthorized');
+                break;
+            case ($e instanceof NoActiveAccountException):
+                return response()->view('errors.no-active-account');
     		default:
     			return parent::render($request, $e);
     			break;
