@@ -11,3 +11,5 @@
 <link rel="stylesheet" href="//cdn.datatables.net/select/1.0.1/css/select.dataTables.min.css">
 <link rel="stylesheet" href="//cdn.datatables.net/responsive/1.0.7/css/responsive.dataTables.min.css">
 <link rel="stylesheet" href="//cdn.datatables.net/buttons/1.0.3/css/buttons.dataTables.min.css">
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">

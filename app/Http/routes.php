@@ -11,7 +11,7 @@
 |
 */
 # page routes
-Route::get('/', 'PagesController@index');
+Route::get('/', ['as' => 'home', 'uses' => 'PagesController@index']);
 
 # test routes
 Route::get('test', 'TestController@index');
@@ -39,5 +39,9 @@ Route::get('admin', ['as' => 'admin', 'uses'  => 'AdminController@index']);
 # terms routes
 Route::get('terms-of-service', 'PagesController@terms');
 Route::get('privacy', 'PagesController@privacy');
+
+# Socialite routes
+Route::get('auth/facebook', 'Auth\AuthController@redirectToProvider');
+Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallback');
 
 

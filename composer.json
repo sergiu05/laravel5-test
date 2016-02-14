@@ -10,7 +10,8 @@
         "laravelcollective/html": "~5.0",
         "patricktalmadge/bootstrapper": "~5",
         "creativeorange/gravatar": "~1.0",
-        "socieboy/alerts": "dev-master"
+        "socieboy/alerts": "dev-master",
+        "laravel/socialite": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

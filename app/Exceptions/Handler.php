@@ -49,6 +49,22 @@ class Handler extends ExceptionHandler
                 break;
             case ($e instanceof NoActiveAccountException):
                 return response()->view('errors.no-active-account');
+                break;
+            case ($e instanceof EmailNotProvidedException):
+                return response()->view('errors.email-not-provided');
+                break;
+            case ($e instanceof EmailAlreadyInSystemException):
+                return response()->view('errors.email-already-in-system');
+                break;
+            case ($e instanceof AlreadySyncedException):
+                return response()->view('errors.already-synced');
+                break;
+            case ($e instanceof CredentialsDoNotMatchException):
+                return response()->view('errors.credentials-do-not-match');
+                break;
+            case ($e instanceof ConnectionNotAcceptedException):
+                return response()->view('errors.connection-not-accepted');
+                break;
     		default:
     			return parent::render($request, $e);
     			break;

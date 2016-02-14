@@ -25,7 +25,7 @@
 </head>
 
 <body role="document">
-
+@include('layouts.facebook')
 <!-- Fixed navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -51,13 +51,23 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/auth/logout">Logout</a></li>                        
+                        <li><a href="/auth/logout">Logout</a></li>
+                        <li>
+                            <a href="/auth/facebook">
+                                <i class="fa fa-facebook"></i> Sync with Fb
+                            </a>
+                        </li>                        
                     </ul>
                 </li>
                 <li><img class="circ" src="{{ Gravatar::get(Auth::user()->email) }}"></li>
                 @else
                 <li><a href="/auth/login">Login</a></li>
                 <li><a href="/auth/register">Register</a></li>
+                <li>
+                    <a href="/auth/facebook">
+                        <i class="fa fa-facebook"></i> Sign In
+                    </a>
+                </li>
                 @endif
             </ul>
         </div><!--/.nav-collapse -->

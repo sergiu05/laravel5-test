@@ -146,7 +146,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Bootstrapper\BootstrapperL5ServiceProvider::class,
         Creativeorange\Gravatar\GravatarServiceProvider::class,
-        Socieboy\Alerts\AlertServiceProvider::class
+        Socieboy\Alerts\AlertServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class
     ],
 
     /*
@@ -197,7 +198,8 @@ return [
         'Form'		=> Collective\Html\FormFacade::class,
         'Html'		=> Collective\Html\HtmlFacade::class,
         'Breadcrumb' => Bootstrapper\Facades\Breadcrumb::class,
-        'Gravatar'	=> Creativeorange\Gravatar\Facades\Gravatar::class
+        'Gravatar'	=> Creativeorange\Gravatar\Facades\Gravatar::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class
     ],
 
 ];

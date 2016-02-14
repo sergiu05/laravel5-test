@@ -28,6 +28,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $fillable = [
             'name', 
             'email', 
+            'facebook_id',
+            'avatar',
             'is_subscribed',
             'is_admin',
             'user_type_id',
