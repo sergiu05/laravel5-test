@@ -8,10 +8,12 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use App\Http\AuthTraits\OwnsRecord;
+use App\Http\Requests\UserRequest;
+use App\ModelTraits\HasModelTrait;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
-    use Authenticatable, CanResetPassword, OwnsRecord;
+    use Authenticatable, CanResetPassword, OwnsRecord, HasModelTrait;
 
     /**
      * The database table used by the model.
@@ -60,5 +62,42 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
         return 10 == \Auth::user()->status_id;
 
+    }
+
+    public function profile() {
+    	return $this->hasOne('App\Profile');
+    }
+
+    public function updateUser($user, UserRequest $request) {
+    	return $user->update([
+    		'name' => $request->name,
+    		'email' => $request->email,
+    		'is_subscribed' => $request->is_subscribed,
+    		'is_admin' => $request->is_admin,
+    		'user_type_id' => $request->user_type_id,
+    		'status_id' => $request->status_id
+    	]);
+    }
+
+    public function showNewsletterStatusOf($user) {
+    	return $user->is_subscribed == 1 ? 'Yes' : 'No';
+    }
+
+    public function showAdminStatusOf($user) {
+    	return $this->is_admin ? 'Yes' : 'No';
+    }
+
+    public function showTypeOf($user) {
+    	switch($user->user_type_id) {
+    		case 10:
+    			return 'Free';
+    			break;
+    		case 20:
+    			return 'Paid';
+    			break;
+    		default:
+    			return 'Free';
+    			break;
+    	}
     }
 }

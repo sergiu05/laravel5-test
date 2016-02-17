@@ -5,5 +5,6 @@
 @endsection
 
 @section('content')
-<h1>I am admin</h1>
+	<h1>I am admin</h1>
+	@include('admin.grid')
 @endsection

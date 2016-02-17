@@ -24,7 +24,7 @@
     <![endif]-->
 </head>
 
-<body role="document">
+<body>
 @include('layouts.facebook')
 <!-- Fixed navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -42,6 +42,17 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
                 <li><a href="#about">About</a></li>
+                @if (Auth::check() && Auth::user()->isAdmin())
+                <li class="dropdown">
+                	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span class="caret"></span></a>
+                	<ul class="dropdown-menu">
+                		<li><a href="/user">Users</a></li>
+                		<li><a href="/profile">Profiles</a></li>
+                	</ul>
+                </li>
+                @endif
+
+
                 <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expended="false">Content<span class="caret"></span></a>
                 	<ul class="dropdown-menu">	
                 		<li><a href="/widget">Widgets</a></li>
@@ -52,6 +63,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="/auth/logout">Logout</a></li>
+                        <li><a href="/my-profile">My Profile</a></li>
+                        <li><a href="/settings">Settings</a></li>
                         <li>
                             <a href="/auth/facebook">
                                 <i class="fa fa-facebook"></i> Sync with Fb

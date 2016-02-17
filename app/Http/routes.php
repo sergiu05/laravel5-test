@@ -44,4 +44,16 @@ Route::get('privacy', 'PagesController@privacy');
 Route::get('auth/facebook', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallback');
 
+# profile routes
+Route::resource('profile', 'ProfileController');
+Route::get('show-profile', ['as' => 'show-profile', 'uses' => 'ProfileController@showProfileToUser']);
+Route::get('my-profile', ['as' => 'my-profile', 'uses' => 'ProfileController@myProfile']);
+Route::any('api/profile', 'ApiController@profileData');
+
+Route::resource('user', 'UserController');
+Route::any('api/user', 'ApiController@userData');
+
+Route::get('settings', 'SettingsController@edit');
+Route::post('settings', ['as' => 'userUpdate', 'uses' => 'SettingsController@update']);
+
 
